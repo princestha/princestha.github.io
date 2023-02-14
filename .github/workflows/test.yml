@@ -27,15 +27,15 @@ jobs:
         uses: actions/checkout@v3
         with:
           path: webapp
+          persist-credentials: false
       
       - name: Checkout Flutter Repo 
         uses: actions/checkout@v3
         with:
           path: 'flutterapp'
           ref: 'main'
-          repository: 'portfolio-flutter'
+          repository: 'princestha/portfolio-flutter'
           token: ${{ secrets.BOT_TOKEN || github.token }}
-          fetch-depth: 0
           persist-credentials: true
 
       - name: Commit and push changes

@@ -41,6 +41,7 @@ jobs:
         run: |
           cp -a flutterapp/. webapp
           cd webapp
+          echo pwd
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .

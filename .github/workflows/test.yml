@@ -37,6 +37,8 @@ jobs:
       - name: Testing Flutter
         run: |
           cd webportfolio
+          echo $(pwd)
+          echo $(ls -la)
           flutter pub get
           flutter build web
 

@@ -43,6 +43,15 @@ jobs:
           echo $(ls -la)
           flutter pub get
           flutter build web
+          cp -r build/web ../
+      
+      - name: Checkout and commit
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "generated"
+          git push
 
       # - name: Sleep for 30 seconds
       #   uses: jakejarvis/wait-action@master

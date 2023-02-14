@@ -33,7 +33,7 @@ jobs:
         with:
           path: 'flutterapp'
           ref: 'main'
-          repository: 'princestha/portfolio-flutter'
+          repository: 'portfolio-flutter'
           token: ${{ secrets.BOT_TOKEN || github.token }}
           fetch-depth: 0
           persist-credentials: true

@@ -32,11 +32,15 @@ jobs:
       - name: Checkout Flutter Repo 
         uses: actions/checkout@v3
         with:
-          path: 'flutterapp'
-          ref: 'main'
-          repository: 'princestha/portfolio-flutter'
+          path: flutterapp
+          repository: princestha/portfolio-flutter
           persist-credentials: true
 
       - name: Commit and push changes
         run: |
           cp -a flutterapp/. webapp
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "generated"
+          git push

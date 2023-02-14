@@ -25,20 +25,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout Pages Repo 
         uses: actions/checkout@v3
-        with:
-          path: webapp
-          persist-credentials: true
-      
-      - name: Checkout Flutter Repo 
-        uses: actions/checkout@v3
-        with:
-          path: flutterapp
-          repository: princestha/portfolio-flutter
-          persist-credentials: false
-          token: ${{ secrets.BOT_TOKEN }}
-
-      - run: echo $(pwd)
-
       - name: Setup Flutter SDK
         uses: flutter-actions/setup-flutter@v2
         with:

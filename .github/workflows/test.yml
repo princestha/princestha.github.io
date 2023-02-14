@@ -35,15 +35,37 @@ jobs:
           path: flutterapp
           repository: princestha/portfolio-flutter
           persist-credentials: false
-          token: ${{ secrets.BOT_TOKEN }}
+          token: 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
 
-      - name: Commit and push changes
+      - run: echo $(pwd)
+
+      - name: Setup Flutter SDK
+        uses: flutter-actions/setup-flutter@v2
+        with:
+          channel: stable
+          version: 3.7.1
+          cache: true
+          cache-key: 'flutter-:os:-:channel:-:version:-:arch:-:hash:' # optional, change this to force refresh cache
+          cache-path: '${{ runner.tool_cache }}/flutter/:channel:-:version:-:arch:' # optional, change this to specify the cache path
+  
+      - name: Testing Flutter
         run: |
-          cp -a flutterapp/. webapp
-          cd webapp
-          echo pwd
-          git config user.name princestha
-          git config user.email prasitshrestha@gmail.com
-          git add .
-          git commit -m "generated"
-          git push
+          cd flutterapp
+          flutter pub get
+          flutter build web
+
+      - name: Sleep for 30 seconds
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '120s'          
+
+      # - name: Commit and push changes
+      #   run: |
+      #     cp -a flutterapp/. webapp
+      #     cd webapp
+      #     echo pwd
+      #     git config user.name princestha
+      #     git config user.email prasitshrestha@gmail.com
+      #     git add .
+      #     git commit -m "generated"
+      #     git push

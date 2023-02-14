@@ -28,7 +28,7 @@ jobs:
         with: 
           submodules: true
           repository: princestha/princestha.github.io
-          token: ${{secrets.BOT_TOKEN}}
+          token: ${{ secrets.BOT_TOKEN}}
       - name: Setup Flutter SDK
         uses: flutter-actions/setup-flutter@v2
         with:

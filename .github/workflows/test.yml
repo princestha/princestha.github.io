@@ -35,7 +35,7 @@ jobs:
           path: flutterapp
           repository: princestha/portfolio-flutter
           persist-credentials: false
-          token: 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
+          token: ${{ secrets.BOT_TOKEN }}
 
       - run: echo $(pwd)
 

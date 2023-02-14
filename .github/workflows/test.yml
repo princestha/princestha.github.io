@@ -29,7 +29,7 @@ jobs:
           path: 'webapp'
           ref: 'testing'
           repository: 'princestha/princestha.github.io'
-          token: ${{ secrets.BOT_TOKEN }}
+          token: ${{ secrets.BOT_TOKEN || github.token }}
           fetch-depth: 0
           persist-credentials: true
       
@@ -39,9 +39,9 @@ jobs:
           path: 'flutterapp'
           ref: 'main'
           repository: 'princestha/portfolio-flutter'
-          token: ${{ secrets.BOT_TOKEN }}
+          token: ${{ secrets.BOT_TOKEN || github.token }}
           fetch-depth: 0
-          persist-credentials: false
+          persist-credentials: true
 
       - name: Commit and push changes
         run: |

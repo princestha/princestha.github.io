@@ -26,24 +26,35 @@ jobs:
       - name: Checkout Pages Repo 
         uses: actions/checkout@v3
         with:
-          path: webapp
-          persist-credentials: true
-      
-      - name: Checkout Flutter Repo 
-        uses: actions/checkout@v3
-        with:
-          path: flutterapp
-          repository: princestha/portfolio-flutter
-          persist-credentials: false
-          token: ${{ secrets.BOT_TOKEN }}
+          submodules: true
 
-      - name: Commit and push changes
+      - name: Setup Flutter SDK
+        uses: flutter-actions/setup-flutter@v2
+        with:
+          channel: stable
+          version: 3.7.1
+          cache: true
+          cache-key: 'flutter-:os:-:channel:-:version:-:arch:-:hash:' # optional, change this to force refresh cache
+          cache-path: '${{ runner.tool_cache }}/flutter/:channel:-:version:-:arch:' # optional, change this to specify the cache path
+  
+      - name: Testing Flutter
         run: |
-          cp -a flutterapp/. webapp
-          cd webapp
-          echo pwd
-          git config user.name princestha
-          git config user.email prasitshrestha@gmail.com
-          git add .
-          git commit -m "generated"
-          git push
+          cd portfolio
+          flutter pub get
+          flutter build web
+
+      - name: Sleep for 30 seconds
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '120s'          
+
+      # - name: Commit and push changes
+      #   run: |
+      #     cp -a flutterapp/. webapp
+      #     cd webapp
+      #     echo pwd
+      #     git config user.name princestha
+      #     git config user.email prasitshrestha@gmail.com
+      #     git add .
+      #     git commit -m "generated"
+      #     git push

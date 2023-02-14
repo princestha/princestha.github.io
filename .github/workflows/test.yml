@@ -35,7 +35,6 @@ jobs:
           path: 'flutterapp'
           ref: 'main'
           repository: 'princestha/portfolio-flutter'
-          token: ${{ secrets.BOT_TOKEN || github.token }}
           persist-credentials: true
 
       - name: Commit and push changes

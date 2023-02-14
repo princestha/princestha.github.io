@@ -26,13 +26,13 @@ jobs:
       - name: Checkout Pages Repo 
         uses: actions/checkout@v3
         with:
-          path: webapp
+          path: /webapp
           persist-credentials: false
       
       - name: Checkout Flutter Repo 
         uses: actions/checkout@v3
         with:
-          path: flutterapp
+          path: /flutterapp
           repository: princestha/portfolio-flutter
           persist-credentials: true
 

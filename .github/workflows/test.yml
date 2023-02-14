@@ -26,19 +26,21 @@ jobs:
       - name: Checkout Pages Repo 
         uses: actions/checkout@v3
         with:
-          path: /webapp
-          persist-credentials: false
+          path: webapp
+          persist-credentials: true
       
       - name: Checkout Flutter Repo 
         uses: actions/checkout@v3
         with:
-          path: /flutterapp
+          path: flutterapp
           repository: princestha/portfolio-flutter
-          persist-credentials: true
+          persist-credentials: false
+          token: ${{ secrets.BOT_TOKEN }}
 
       - name: Commit and push changes
         run: |
           cp -a flutterapp/. webapp
+          cd webapp
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .

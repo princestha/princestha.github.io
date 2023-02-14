@@ -36,7 +36,7 @@ jobs:
   
       - name: Testing Flutter
         run: |
-          cd flutterapp
+          cd webportfolio
           flutter pub get
           flutter build web
 

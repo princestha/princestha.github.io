@@ -54,10 +54,10 @@ jobs:
           flutter pub get
           flutter build web
 
-      - name: Sleep for 30 seconds
-        uses: jakejarvis/wait-action@master
-        with:
-          time: '120s'          
+      # - name: Sleep for 30 seconds
+      #   uses: jakejarvis/wait-action@master
+      #   with:
+      #     time: '120s'          
 
       # - name: Commit and push changes
       #   run: |

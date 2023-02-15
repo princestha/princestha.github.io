@@ -43,7 +43,7 @@ jobs:
           cache: true
   
       - name: Testing Flutter
-        working-directory: ${GITHUB_WORKSPACE}/portfolio
+        working-directory: portfolio
         run: |
           ls
           flutter pub get

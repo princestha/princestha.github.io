@@ -47,16 +47,13 @@ jobs:
         run: |
           flutter pub get
           flutter build web
-
-          cp -r portfolio/build/web/. src/
-          cp -r build/web/. ../
       
       - name: Move flutter project to src
-        working-directory: /
+        working-directory: src
         run: |
           echo $(pwd)
           echo $(ls)
-          cp -r ./portfolio/blild/web/ ./src
+          cp -r ../portfolio/build/web/ .
       
       - name: Checkout and commit
         working-directory: src

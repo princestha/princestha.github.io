@@ -26,8 +26,14 @@ jobs:
       - name: Checkout Pages Repo 
         uses: actions/checkout@v3
         with: 
-          submodules: true
+          path: src
           repository: princestha/princestha.github.io
+          token: ${{ secrets.BOT_TOKEN}}
+      - name: Checkout Flutter Repo 
+        uses: actions/checkout@v3
+        with: 
+          path: portfolio
+          repository: princestha/portfolio-flutter
           token: ${{ secrets.BOT_TOKEN}}
       - name: Setup Flutter SDK
         uses: flutter-actions/setup-flutter@v2
@@ -37,26 +43,22 @@ jobs:
           cache: true
   
       - name: Testing Flutter
+        working-directory: ${GITHUB_WORKSPACE}/portfolio
         run: |
-          cd webportfolio
-          echo $(pwd)
-          echo $(ls -la)
+          ls
           flutter pub get
           flutter build web
-          cp -r build/web ../
+          cd ..
+          cp -r portfolio/build/web/. src/
+          cp -r build/web/. ../
       
       - name: Checkout and commit
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
-          git commit -m "generated"
-          git push
-
-      # - name: Sleep for 30 seconds
-      #   uses: jakejarvis/wait-action@master
-      #   with:
-      #     time: '120s'          
+          git commit -m "generated web"
+          git push       
 
       # - name: Commit and push changes
       #   run: |

@@ -42,17 +42,24 @@ jobs:
           version: 3.7.1
           cache: true
   
-      - name: Testing Flutter
+      - name:  Build flutter web
         working-directory: portfolio
         run: |
-          ls
           flutter pub get
           flutter build web
-          cd ..
+
           cp -r portfolio/build/web/. src/
           cp -r build/web/. ../
       
+      - name: Move flutter project to src
+        working-directory: /
+        run: |
+          echo $(pwd)
+          echo $(ls)
+          cp -r ./portfolio/blild/web/ ./src
+      
       - name: Checkout and commit
+        working-directory: src
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com

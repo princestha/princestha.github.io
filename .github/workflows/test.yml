@@ -53,7 +53,7 @@ jobs:
         run: |
           echo $(pwd)
           echo $(ls)
-          cp -r ../portfolio/build/web/ .
+          cp -r ../portfolio/build/web/* .
       
       - name: Checkout and commit
         working-directory: src

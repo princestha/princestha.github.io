@@ -1,16 +1,36 @@
-# my_flutter_app
+# Prince Shrestha's Portfolio
 
-A new Flutter project.
+A Flutter web application for showcasing projects and professional experience.
 
-## Getting Started
+## 🚀 Deployment
 
-This project is a starting point for a Flutter application.
+This site is automatically deployed to GitHub Pages when changes are pushed to the `main` branch.
 
-A few resources to get you started if this is your first Flutter project:
+The deployment workflow:
+1. Builds the Flutter web app
+2. Deploys to GitHub Pages
+3. Available at: https://princestha.github.io
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🛠️ Development
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Prerequisites
+- Flutter SDK (3.27.1 or later)
+- Dart SDK
+
+### Setup
+```bash
+# Install dependencies
+flutter pub get
+
+# Run the app in debug mode
+flutter run -d chrome
+
+# Build for production
+flutter build web --release
+```
+
+## 📝 Resources
+
+- [Flutter Documentation](https://docs.flutter.dev/)
+- [Flutter Web](https://flutter.dev/web)
+- [GitHub Pages](https://pages.github.com/)
